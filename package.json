@@ -1,0 +1,4 @@
+{
+  "name": "use-napi-rs-packages-with-bundlers",
+  "packageManager": "yarn@4.1.0"
+}
