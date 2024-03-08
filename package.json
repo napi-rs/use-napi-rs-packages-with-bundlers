@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "yarn@4.1.0",
+  "packageManager": "yarn@4.1.1",
   "devDependencies": {
     "@node-rs/argon2": "^1.7.2",
     "@types/webpack": "^5.28.5",
