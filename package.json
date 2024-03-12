@@ -17,7 +17,7 @@
   },
   "scripts": {
     "run:esbuild": "yarn esbuild --bundle src/index.js --outfile=dist/esbuild.cjs --platform=node --loader:.node=copy --format=cjs && node dist/esbuild.cjs",
-    "run:vite": "yarn vite build && node dist/vite.js",
+    "run:vite": "yarn vite build && node dist/vite.cjs",
     "run:webpack": "webpack --mode=production && node dist/bundled.cjs"
   }
 }

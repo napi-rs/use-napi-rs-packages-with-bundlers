@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { readFile, writeFile, copyFile } from "node:fs/promises";
 import { basename, extname, sep, dirname, posix } from "node:path";
 import crypto from "node:crypto";
@@ -13,30 +14,18 @@ const ViteNodeAddonPlugin = (): Plugin => {
     name: "native-addon",
     apply: "build",
     enforce: "pre",
-    async load(p) {
-      if (p.endsWith(".node")) {
-        const data = await readFile(p);
-        const hash = crypto
-          .createHash("sha1")
-          .update(data)
-          .digest("hex")
-          .substring(0, 16);
-        const ext = extname(p);
-        const name = basename(p, ext);
-        const relativeDir = dirname(p).split(sep).pop();
-        const outputFileName = fileName
-          .replace(/\[hash\]/g, hash)
-          .replace(/\[extname\]/g, ext)
-          // use `sep` for windows environments
-          .replace(
-            /\[dirname\]/g,
-            relativeDir === "" ? "" : `${relativeDir}${sep}`
-          )
-          .replace(/\[name\]/g, name);
-        // Windows fix - exports must be in unix format
-        const filename = `${outputFileName.split(sep).join(posix.sep)}`;
-        files.set(p, filename);
-        return `let binding = { exports: { } }; process.dlopen(binding, new URL('${filename}', import.meta.url).pathname); export default binding.exports;`;
+    async load(id) {
+      if (id.endsWith(".node") && existsSync(id)) {
+        const refId = this.emitFile({
+          type: "asset",
+          fileName: basename(id),
+          source: await readFile(id),
+        });
+        const runtimePath = `./${this.getFileName(refId)}`;
+        return (
+          `const id = ${JSON.stringify(runtimePath)};` +
+          `export default require(id);`
+        );
       }
       return null;
     },
@@ -61,8 +50,8 @@ export default defineConfig({
     rollupOptions: {
       input: "./src/index.js",
       output: {
-        format: "esm",
-        entryFileNames: "vite.js",
+        format: "cjs",
+        entryFileNames: "vite.cjs",
       },
     },
     target: "esnext",
