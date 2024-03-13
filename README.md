@@ -6,6 +6,12 @@
 yarn install
 ```
 
+## Vite
+
+Build and run the `Vite` example:
+
+`yarn run:vite`
+
 ## webpack
 
 Build and run the webpack example:
