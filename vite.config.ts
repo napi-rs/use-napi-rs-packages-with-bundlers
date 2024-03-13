@@ -1,15 +1,11 @@
 import { existsSync } from "node:fs";
-import { readFile, writeFile, copyFile } from "node:fs/promises";
-import { basename, extname, sep, dirname, posix } from "node:path";
-import crypto from "node:crypto";
+import { readFile } from "node:fs/promises";
+import { basename } from "node:path";
 
 import { Plugin, defineConfig } from "vite";
 import builtinModules from "builtin-modules";
 
-const fileName = "[hash][extname]";
-
 const ViteNodeAddonPlugin = (): Plugin => {
-  const files = new Map<string, string>();
   return {
     name: "native-addon",
     apply: "build",
@@ -28,15 +24,6 @@ const ViteNodeAddonPlugin = (): Plugin => {
         );
       }
       return null;
-    },
-    async generateBundle(outputOptions) {
-      for (const [input, output] of files) {
-        await copyFile(input, `${outputOptions.dir}/${output}`);
-        await writeFile(
-          `${outputOptions.dir}/${output}.js`,
-          `let binding = { exports: { } }; process.dlopen(binding, new URL('${output}', import.meta.url).pathname); export default binding.exports;`
-        );
-      }
     },
   };
 };
