@@ -5,16 +5,19 @@
   "type": "module",
   "packageManager": "yarn@4.1.1",
   "devDependencies": {
-    "@node-rs/argon2": "^1.7.2",
+    "@node-rs/argon2": "^1.8.0",
     "@types/webpack": "^5.28.5",
+    "builtin-modules": "^3.3.0",
     "esbuild": "^0.20.1",
     "node-loader": "^2.0.0",
-    "rollup": "^4.12.0",
+    "rollup": "^4.13.0",
+    "vite": "^5.1.6",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "run:esbuild": "yarn esbuild --bundle src/index.js --outfile=dist/esbuild.cjs --platform=node --loader:.node=copy --format=cjs && node dist/esbuild.cjs",
+    "run:vite": "yarn vite build && node dist/vite.cjs",
     "run:webpack": "webpack --mode=production && node dist/bundled.cjs"
   }
 }
