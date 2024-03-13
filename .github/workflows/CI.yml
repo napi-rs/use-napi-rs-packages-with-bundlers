@@ -18,3 +18,4 @@ jobs:
     - run: yarn install
     - run: yarn run:webpack
     - run: yarn run:esbuild
+    - run: yarn run:vite
