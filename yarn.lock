@@ -1100,10 +1100,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"builtin-modules@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "builtin-modules@npm:3.3.0"
-  checksum: 10c0/2cb3448b4f7306dc853632a4fcddc95e8d4e4b9868c139400027b71938fc6806d4ff44007deffb362ac85724bd40c2c6452fb6a0aa4531650eeddb98d8e5ee8a
+"builtin-modules@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "builtin-modules@npm:4.0.0"
+  checksum: 10c0/c10c71c35a1a9b2c5fbb58c1b7eed3f38f16ec0903de55dfa54604ff19895dd7f35b79e5bb0756fc09642714d637ca905653b35ba76c00ae29310ca5c9668bf5
   languageName: node
   linkType: hard
 
@@ -2678,7 +2678,7 @@ __metadata:
   dependencies:
     "@node-rs/argon2": "npm:^1.8.0"
     "@types/webpack": "npm:^5.28.5"
-    builtin-modules: "npm:^3.3.0"
+    builtin-modules: "npm:^4.0.0"
     esbuild: "npm:^0.20.1"
     node-loader: "npm:^2.0.0"
     rollup: "npm:^4.13.0"
