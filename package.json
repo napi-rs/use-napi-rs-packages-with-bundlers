@@ -7,7 +7,7 @@
   "devDependencies": {
     "@node-rs/argon2": "^1.8.0",
     "@types/webpack": "^5.28.5",
-    "builtin-modules": "^4.0.0",
+    "builtin-modules": "^5.0.0",
     "esbuild": "^0.20.1",
     "node-loader": "^2.0.0",
     "rollup": "^4.13.0",
