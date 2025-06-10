@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "yarn@4.1.1",
   "devDependencies": {
-    "@node-rs/argon2": "^1.8.0",
+    "@node-rs/argon2": "^2.0.0",
     "@types/webpack": "^5.28.5",
     "builtin-modules": "^5.0.0",
     "esbuild": "^0.20.1",
