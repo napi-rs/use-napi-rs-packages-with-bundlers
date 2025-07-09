@@ -11,7 +11,7 @@
     "esbuild": "^0.25.0",
     "node-loader": "^2.0.0",
     "rollup": "^4.13.0",
-    "vite": "^6.0.0",
+    "vite": "^7.0.0",
     "webpack": "^5.90.3",
     "webpack-cli": "^6.0.0"
   },
